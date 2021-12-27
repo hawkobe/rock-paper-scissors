@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        //getting user input on their answer to rock paper scissors
+        const playerSelection = prompt('Please enter either "Rock", "Paper", or "Scissors"');
+
+        const computerSelection = computerPlay();
+
+        console.log(playerSelection);
+        console.log(computerSelection);
+
+        // Randomly return an answer for either rock, paper, or scissors
+        function computerPlay() {
+            let random = ['rock', 'paper', 'scissors'];
+            return random[Math.floor(Math.random() * random.length)];
+        }
+
+        // write a function to play one game of rock paper scissors
+        // need to have statements that determine heirerarchy of winning
+        // user answers need to be case insesitive
+
+        function playRound(playerSelection, computerSelection) {
+            if (playerSelection === computerSelection) {
+            return 'It\'s a Tie!';
+            }
+            if (playerSelection === 'rock') {
+                if (computerSelection === 'paper') {
+                    return 'You lose! Paper Beats rock!';
+                } else if (computerSelection === 'scissors') {
+                    return 'You Win! Rock beats scissors!';
+                } 
+            } else if (playerSelection === 'paper') {
+                if (computerSelection === 'rock') {
+                    return 'You win! Paper covers rock.'
+                } else if (computerSelection === 'scissors') {
+                    return 'You lose! Scissors cut up paper.'
+                }
+            } else if (playerSelection === 'scissors') {
+                if (computerSelection === 'rock') {
+                    return 'You lose! Rock smashes scissors';
+                } else if (computerSelection === 'paper') {
+                    return 'You win! Scissors cut up paper';
+                }
+            }
+        }  
+        console.log(playRound(playerSelection, computerSelection));
+    </script>
+</body>
+</html>
