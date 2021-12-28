@@ -8,49 +8,86 @@
 </head>
 <body>
     <script>
-        //getting user input on their answer to rock paper scissors
-        const playerSelection = prompt('Please enter either "Rock", "Paper", or "Scissors"');
+        const playerSelection = 'rock'; // I don't think I need this here, can put it in playRound
+        const computerSelection = computerPlay(); // same as line 11
+        let playerScore = 0;
 
-        const computerSelection = computerPlay();
+        let computerScore = 0;
 
-        console.log(playerSelection);
-        console.log(computerSelection);
+        let roundNumber = 0;
 
-        // Randomly return an answer for either rock, paper, or scissors
         function computerPlay() {
             let random = ['rock', 'paper', 'scissors'];
             return random[Math.floor(Math.random() * random.length)];
         }
 
-        // write a function to play one game of rock paper scissors
-        // need to have statements that determine heirerarchy of winning
-        // user answers need to be case insesitive
-
         function playRound(playerSelection, computerSelection) {
+            playerSelection = prompt('Please enter either "Rock", "Paper", or "Scissors"').toLowerCase();
+
+            console.log(playerSelection);
+
+            let result;
+
             if (playerSelection === computerSelection) {
+            result = 'draw';
             return 'It\'s a Tie!';
             }
             if (playerSelection === 'rock') {
                 if (computerSelection === 'paper') {
+                    computerScore++;
                     return 'You lose! Paper Beats rock!';
                 } else if (computerSelection === 'scissors') {
+                    playerScore++;
                     return 'You Win! Rock beats scissors!';
                 } 
             } else if (playerSelection === 'paper') {
                 if (computerSelection === 'rock') {
+                    playerScore++;
                     return 'You win! Paper covers rock.'
                 } else if (computerSelection === 'scissors') {
+                    computerScore++;
                     return 'You lose! Scissors cut up paper.'
                 }
             } else if (playerSelection === 'scissors') {
                 if (computerSelection === 'rock') {
+                    computerScore++;
                     return 'You lose! Rock smashes scissors';
                 } else if (computerSelection === 'paper') {
+                    playerScore++;
                     return 'You win! Scissors cut up paper';
                 }
             }
-        }  
-        console.log(playRound(playerSelection, computerSelection));
+        }
+
+        function game() {
+            console.log(playRound(playerSelection, computerSelection));
+            roundNumber++;
+            console.log(playerScore, computerScore);
+            console.log(playRound(playerSelection, computerSelection));
+            roundNumber++;
+            console.log(playerScore, computerScore);
+            console.log(playRound(playerSelection, computerSelection));
+            roundNumber++;
+            console.log(playerScore, computerScore);
+            console.log(playRound(playerSelection, computerSelection));
+            roundNumber++;
+            console.log(playerScore, computerScore);
+            console.log(playRound(playerSelection, computerSelection));
+            roundNumber++;
+            console.log(playerScore, computerScore);
+            if (roundNumber >= 5 && (playerScore > computerScore)) {
+                console.log(`You win! Your score was ${playerScore} and the Computer\'s score was ${computerScore}`);
+            } else {
+                console.log(`You lose! Your score was ${playerScore} and the Computer\'s score was ${computerScore}`);
+            }
+        }
+
+        game();
+
+        // Need to write a game function that keeps track of score and reports a winner or user at the end
+            //starting score for player and computer needs to be 0, and then needs 1 added to it
+        // need to take outputs from wins or losses and return the wins as points
+            // return should display log "winner" or "loser"
     </script>
 </body>
 </html>
