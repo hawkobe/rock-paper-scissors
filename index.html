@@ -8,25 +8,27 @@
 </head>
 <body>
     <script>
-        const playerSelection = 'rock'; // I don't think I need this here, can put it in playRound
-        const computerSelection = computerPlay(); // same as line 11
+        // Defining global variables
         let playerScore = 0;
 
         let computerScore = 0;
 
         let roundNumber = 0;
-
+        
+        // Makes a random choice between rock, paper, or scissors
         function computerPlay() {
             let random = ['rock', 'paper', 'scissors'];
             return random[Math.floor(Math.random() * random.length)];
         }
 
+        // Takes care of what happens between player and computer choices, and assigns a score
         function playRound(playerSelection, computerSelection) {
             playerSelection = prompt('Please enter either "Rock", "Paper", or "Scissors"').toLowerCase();
+            computerSelection = computerPlay();
 
+            //just for when you're playing in the "console" version of the game
             console.log(playerSelection);
-
-            let result;
+            console.log(computerSelection);
 
             if (playerSelection === computerSelection) {
             result = 'draw';
@@ -46,7 +48,7 @@
                     return 'You win! Paper covers rock.'
                 } else if (computerSelection === 'scissors') {
                     computerScore++;
-                    return 'You lose! Scissors cut up paper.'
+                    return 'You lose! Scissors cut up paper.';
                 }
             } else if (playerSelection === 'scissors') {
                 if (computerSelection === 'rock') {
@@ -59,35 +61,23 @@
             }
         }
 
+        // Takes function playRound and turns it into a whole game, playing 5 rounds
+        // outputs Score every time a round is played and outputs the winner at the end of a game
         function game() {
-            console.log(playRound(playerSelection, computerSelection));
-            roundNumber++;
-            console.log(playerScore, computerScore);
-            console.log(playRound(playerSelection, computerSelection));
-            roundNumber++;
-            console.log(playerScore, computerScore);
-            console.log(playRound(playerSelection, computerSelection));
-            roundNumber++;
-            console.log(playerScore, computerScore);
-            console.log(playRound(playerSelection, computerSelection));
-            roundNumber++;
-            console.log(playerScore, computerScore);
-            console.log(playRound(playerSelection, computerSelection));
-            roundNumber++;
-            console.log(playerScore, computerScore);
+            for (roundNumber = 0; roundNumber <= 4; roundNumber++) {
+                console.log(playRound());
+                console.log(playerScore, computerScore);
+            }
             if (roundNumber >= 5 && (playerScore > computerScore)) {
-                console.log(`You win! Your score was ${playerScore} and the Computer\'s score was ${computerScore}`);
+                console.log(`Game Over -- You win! Your score was ${playerScore} and the Computer's score was ${computerScore}`);
+            } else if (roundNumber >= 5 && playerScore === computerScore) {
+                console.log(`Game Over -- It's a tie! Your score was ${playerScore} and the Computer's score was ${computerScore}`);
             } else {
-                console.log(`You lose! Your score was ${playerScore} and the Computer\'s score was ${computerScore}`);
+                console.log(`Game Over -- You lose! Your score was ${playerScore} and the Computer's score was ${computerScore}`);
             }
         }
 
         game();
-
-        // Need to write a game function that keeps track of score and reports a winner or user at the end
-            //starting score for player and computer needs to be 0, and then needs 1 added to it
-        // need to take outputs from wins or losses and return the wins as points
-            // return should display log "winner" or "loser"
     </script>
 </body>
 </html>
