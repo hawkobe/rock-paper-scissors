@@ -1,7 +1,9 @@
 # rock-paper-scissors
 
 This is my first real on-my-own project incorporating javascript,
-html, and css all together, and getting them to cooperate with one another.
+html, and css all together, and getting them to cooperate with one another to create a game of Rock Paper Scissors with a UI.
+
+Originally, we were asked to create a "console" version of the game -- that is stored in this repo as "index.START".
 
 In retrospect, the code feels a little clunky and at times verbose, and I used a few workarounds that could have been accomplished more cleanly in the future (i.e. using a margin on the "VS" text that was in a flexbox to get it "centered"), but I am proud of what I was able to accomplish, and hope that with more practice I will be able to overcome these obstacles more easily in the future.
 
