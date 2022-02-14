@@ -4,80 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <script>
-        // Defining global variables
-        let playerScore = 0;
+    <div id="content-wrapper">
+        <div class="content">
+            <div class="header">
+                <h1 class="rock">Rock</h1>
+                <h1 class="paper">Paper</h1>
+                <h1 class="scissors">Scissors</h1>
+            </div>
+            <h2>Try Your Luck</h2>
+            <div id='selectors'>
+                <button class="selector">Rock</button>
+                <button class="selector">Paper</button>
+                <button class="selector">Scissors</button>
+            </div>
+            <div class="game-wrapper">
+                <div class="titles">
+                    <h2>Human</h2>
+                    <h2>Computer</h2>
+                </div>
+                <div id="game-box">
+                    <div class="user">
+                        <div class="player-choice"><img class="align-left slide-in"></div>
+                        <div class="score">Player Score:</div>
+                        <div class="player-score">0</div>
+                    </div>
+                    <div class="vs"><span class="text">VS</span></div>
+                    <div class="computer">
+                        <div class="computer-choice"><img class="align-right slide-in"></div>
+                        <div class="score">Computer Score:</div>
+                        <div class="computer-score">0</div>
+                    </div>
+                </div>
+            </div>
+            <h3 id="win-loss-flavor"></h3>
+            <h3 id="end-game-message"></h3>
+        </div>
+    </div>
 
-        let computerScore = 0;
 
-        let roundNumber = 0;
-        
-        // Makes a random choice between rock, paper, or scissors
-        function computerPlay() {
-            let random = ['rock', 'paper', 'scissors'];
-            return random[Math.floor(Math.random() * random.length)];
-        }
-
-        // Takes care of what happens between player and computer choices, and assigns a score
-        function playRound(playerSelection, computerSelection) {
-            playerSelection = prompt('Please enter either "Rock", "Paper", or "Scissors"').toLowerCase();
-            computerSelection = computerPlay();
-
-            //just for when you're playing in the "console" version of the game
-            console.log(playerSelection);
-            console.log(computerSelection);
-
-            if (playerSelection === computerSelection) {
-            result = 'draw';
-            return 'It\'s a Tie!';
-            }
-            if (playerSelection === 'rock') {
-                if (computerSelection === 'paper') {
-                    computerScore++;
-                    return 'You lose! Paper Beats rock!';
-                } else if (computerSelection === 'scissors') {
-                    playerScore++;
-                    return 'You Win! Rock beats scissors!';
-                } 
-            } else if (playerSelection === 'paper') {
-                if (computerSelection === 'rock') {
-                    playerScore++;
-                    return 'You win! Paper covers rock.'
-                } else if (computerSelection === 'scissors') {
-                    computerScore++;
-                    return 'You lose! Scissors cut up paper.';
-                }
-            } else if (playerSelection === 'scissors') {
-                if (computerSelection === 'rock') {
-                    computerScore++;
-                    return 'You lose! Rock smashes scissors';
-                } else if (computerSelection === 'paper') {
-                    playerScore++;
-                    return 'You win! Scissors cut up paper';
-                }
-            }
-        }
-
-        // Takes function playRound and turns it into a whole game, playing 5 rounds
-        // outputs Score every time a round is played and outputs the winner at the end of a game
-        function game() {
-            for (roundNumber = 0; roundNumber <= 4; roundNumber++) {
-                console.log(playRound());
-                console.log(playerScore, computerScore);
-            }
-            if (roundNumber >= 5 && (playerScore > computerScore)) {
-                console.log(`Game Over -- You win! Your score was ${playerScore} and the Computer's score was ${computerScore}`);
-            } else if (roundNumber >= 5 && playerScore === computerScore) {
-                console.log(`Game Over -- It's a tie! Your score was ${playerScore} and the Computer's score was ${computerScore}`);
-            } else {
-                console.log(`Game Over -- You lose! Your score was ${playerScore} and the Computer's score was ${computerScore}`);
-            }
-        }
-
-        game();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
